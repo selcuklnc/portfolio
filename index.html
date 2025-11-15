@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Selcuk Kilinc | Academic Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e40af;
+            --accent: #f59e0b;
+            --accent-hover: #d97706;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --text: #334155;
+            --muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Crimson Pro', serif;
+            color: var(--primary);
+        }
+
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 0.8rem 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            position: relative;
+            padding: 0.3rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero Section - FIXED */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: #0f172a;
+            background-image: linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #3b82f6 100%);
+            padding-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            border-radius: 50%;
+            animation: pulse 8s infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            border-radius: 50%;
+            animation: pulse 10s infinite reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            color: #ffffff;
+            width: 100%;
+        }
+
+        .hero-layout {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .hero-photo {
+            flex-shrink: 0;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideUp 1s ease;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #ffffff;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+            animation: slideUp 1s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+            animation: slideUp 1s ease 0.1s both;
+        }
+
+        .hero .affiliation {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1.2rem;
+            animation: slideUp 1s ease 0.2s both;
+        }
+
+        .hero .affiliation i {
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+
+        .hero-about {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            animation: slideUp 1s ease 0.3s both;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.2rem;
+            animation: slideUp 1s ease 0.4s both;
+        }
+
+        .contact-info a {
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent);
+            transform: translateX(3px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            animation: slideUp 1s ease 0.5s both;
+        }
+
+        .social-links a {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 0.9rem;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.3rem;
+            font-size: 1.3rem;
+        }
+
+        .card h4 {
+            color: var(--accent-hover);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        .card .meta {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card ul {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .card li {
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        /* Tabs */
+        .tabs-container {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+        }
+
+        .tab-buttons {
+            display: flex;
+            background: var(--light);
+            border-bottom: 2px solid var(--border);
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            padding: 1rem 1.5rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--muted);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            color: var(--secondary);
+            background: rgba(30, 64, 175, 0.05);
+        }
+
+        .tab-btn.active {
+            color: var(--secondary);
+            background: white;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 1.5rem;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .tab-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .tab-content::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+
+        .tab-content::-webkit-scrollbar-thumb {
+            background: var(--muted);
+            border-radius: 3px;
+        }
+
+        /* Publications */
+        .publication-item {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background: var(--light);
+            border-left: 3px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .publication-item:hover {
+            background: rgba(245, 158, 11, 0.05);
+            transform: translateX(3px);
+        }
+
+        .publication-item p {
+            margin: 0;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .publication-item .doi {
+            display: inline-block;
+            margin-top: 0.4rem;
+            color: var(--secondary);
+            font-size: 0.85rem;
+        }
+
+        .author-me {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Education Grid */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .edu-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .edu-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .edu-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .edu-card h4 {
+            color: var(--accent-hover);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .edu-card .meta {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .edu-card .project {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .edu-card .project a {
+            display: inline-block;
+            margin-top: 0.3rem;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        /* Service */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+        }
+
+        .skill-category h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-category li {
+            padding: 0.4rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .skill-category li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Memberships */
+        .membership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .membership-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .membership-item .org {
+            font-weight: 600;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .membership-item .year {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        /* CV Download */
+        .cv-section {
+            background-color: #1e40af;
+            background-image: linear-gradient(135deg, #1e40af 0%, #0f172a 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 2rem;
+        }
+
+        .cv-section h2 {
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+            font-size: 2rem;
+        }
+
+        .cv-section p {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .cv-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #ffffff;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cv-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: #ffffff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        /* Alternating Backgrounds */
+        section:nth-child(even) {
+            background: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0.8rem;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero-layout {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-about {
+                text-align: left;
+            }
+
+            .contact-info {
+                justify-content: center;
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .tab-btn {
+                padding: 0.8rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .education-grid,
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Selcuk Kilinc, PhD</div>
+            <button class="mobile-toggle" onclick="toggleNav()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#presentations">Presentations</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#service">Service</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="top" style="min-height: 100vh; display: flex; align-items: center; background: #0f172a; padding-top: 60px; position: relative;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #3b82f6 100%); z-index: 1;"></div>
+        <div class="container" style="position: relative; z-index: 10;">
+            <div class="hero-content">
+                <div class="hero-layout">
+                    <div class="hero-photo">
+                        <!-- REPLACE THIS URL WITH YOUR PHOTO LINK -->
+                        <img src="https://via.placeholder.com/200x200/1e40af/ffffff?text=Your+Photo" alt="Selcuk Kilinc" class="profile-img">
+                    </div>
+                    <div class="hero-text">
+                        <h1 style="color: #ffffff !important;">Selcuk Kilinc</h1>
+                        <div class="subtitle" style="color: rgba(255, 255, 255, 0.95) !important;">Postdoctoral Research Associate</div>
+                        <div class="affiliation" style="color: rgba(255, 255, 255, 0.85) !important;">
+                            <i class="fas fa-university" style="color: #f59e0b;"></i> Department of Teaching, Learning & Culture | Texas A&M University
+                        </div>
+                        <div class="hero-about" style="color: rgba(255, 255, 255, 0.9) !important;">
+                            Postdoctoral researcher at the intersection of artificial intelligence, educational technology, and learning sciences. I combine expertise in software engineering (MS) and science education (PhD) to design and evaluate AI-driven learning systems, IoT sensor networks, and adaptive tutoring environments that enhance student inquiry, computational thinking, and teacher professional development.
+                        </div>
+                        <div class="contact-info">
+                            <a href="mailto:selcuklnc@tamu.edu" style="color: rgba(255, 255, 255, 0.9) !important;">
+                                <i class="fas fa-envelope"></i> selcuklnc@tamu.edu
+                            </a>
+                            <a href="tel:+19797213467" style="color: rgba(255, 255, 255, 0.9) !important;">
+                                <i class="fas fa-phone"></i> +1 979 721 3467
+                            </a>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/selcuklnc" target="_blank" style="color: #ffffff !important; background: rgba(255, 255, 255, 0.15) !important;">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            <a href="https://www.researchgate.net/profile/Selcuk-Kilinc" target="_blank" style="color: #ffffff !important; background: rgba(255, 255, 255, 0.15) !important;">
+                                <i class="fab fa-researchgate"></i> ResearchGate
+                            </a>
+                            <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" style="color: #ffffff !important; background: rgba(255, 255, 255, 0.15) !important;">
+                                <i class="fas fa-graduation-cap"></i> Google Scholar
+                            </a>
+                            <a href="https://orcid.org/0000-0001-8846-7243" target="_blank" style="color: #ffffff !important; background: rgba(255, 255, 255, 0.15) !important;">
+                                <i class="fab fa-orcid"></i> 0000-0001-8846-7243
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="edu-card">
+                    <h3>Doctor of Philosophy</h3>
+                    <h4>Science Education</h4>
+                    <div class="meta">
+                        <i class="fas fa-university"></i> Middle East Technical University<br>
+                        <i class="fas fa-calendar"></i> Feb 2018 – Jul 2023 | Ankara, Turkey
+                    </div>
+                    <div class="project">
+                        <strong>Dissertation:</strong> Real-Time Air Quality Monitoring as A Catalyst for the Growth of Pre-Service Science Teachers in Citizen Science
+                        <br><a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> View Dissertation</a>
+                    </div>
+                </div>
+
+                <div class="edu-card">
+                    <h3>Master of Science</h3>
+                    <h4>Software Engineering</h4>
+                    <div class="meta">
+                        <i class="fas fa-university"></i> Middle East Technical University<br>
+                        <i class="fas fa-calendar"></i> Sep 2020 – Jul 2022 | Ankara, Turkey
+                    </div>
+                    <div class="project">
+                        <strong>Graduation Project:</strong> SmartCal: Innovating Mobile Tech for Real-Time Calorie Tracking and Dietary Guidance
+                        <br><a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> View Project</a>
+                    </div>
+                </div>
+
+                <div class="edu-card">
+                    <h3>Master of Science</h3>
+                    <h4>Secondary Science and Mathematics Education</h4>
+                    <div class="meta">
+                        <i class="fas fa-university"></i> Middle East Technical University<br>
+                        <i class="fas fa-calendar"></i> Jan 2015 – Jan 2018 | Ankara, Turkey
+                    </div>
+                    <div class="project">
+                        <strong>Thesis:</strong> Exploring of STEM Readiness of a Faculty of Education in Turkey
+                        <br><a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> View Thesis</a>
+                    </div>
+                </div>
+
+                <div class="edu-card">
+                    <h3>Integrated Bachelor's & Non-Thesis Master's</h3>
+                    <h4>Chemistry Education</h4>
+                    <div class="meta">
+                        <i class="fas fa-university"></i> Middle East Technical University<br>
+                        <i class="fas fa-calendar"></i> Sep 2007 – Jun 2014 | Ankara, Turkey
+                    </div>
+                    <div class="project">
+                        <strong>Graduation Project:</strong> Goal Orientations and Task Values of High School Students
+                        <br><a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="card">
+                <h3>Postdoctoral Research Associate</h3>
+                <h4>Texas A&M University</h4>
+                <div class="meta">
+                    <i class="fas fa-calendar"></i> January 2025 – Present | TX, USA
+                </div>
+                <ul>
+                    <li>Co-designed and led the "AI-Enhanced Computational Thinking and Agricultural Science in Rural Schools" project, coordinating multi-site implementations across two school districts with 80+ middle school students</li>
+                    <li>Developed custom AI chatbot tutors and Arduino IoT sensors to scaffold student inquiry and computational thinking in Ag-STEM contexts</li>
+                    <li>Facilitated professional development workshops with K-12 teachers on integrating AI and IoT technologies</li>
+                    <li>Contributed to competitive grant proposals (AIM4Rural) and delivered invited lectures</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Research & Teaching Assistant</h3>
+                <h4>Middle East Technical University Faculty of Education</h4>
+                <div class="meta">
+                    <i class="fas fa-calendar"></i> September 2015 – December 2024 | Ankara, Turkey
+                </div>
+                <ul>
+                    <li>Authored and co-authored publications in leading journals, presented at premier conferences</li>
+                    <li>Designed and delivered courses on instructional technology, research methods, and science pedagogy</li>
+                    <li>Mentored graduate and undergraduate students in qualitative, quantitative, and mixed-methods research</li>
+                    <li>Pioneered Arduino-based environmental monitoring modules in teacher education</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Coordinator for Research Assistants</h3>
+                <h4>Middle East Technical University Faculty of Education</h4>
+                <div class="meta">
+                    <i class="fas fa-calendar"></i> January 2023 – December 2024 | Ankara, Turkey
+                </div>
+                <ul>
+                    <li>Led 20+ assistants, strategically aligning responsibilities with faculty priorities</li>
+                    <li>Implemented efficient scheduling and workload distribution systems</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Distance Education Coordinator</h3>
+                <h4>METU Distance Education Application Research Center</h4>
+                <div class="meta">
+                    <i class="fas fa-calendar"></i> March 2020 – December 2024 | Ankara, Turkey
+                </div>
+                <ul>
+                    <li>Led institutional transition to online education during COVID-19, supporting 40+ faculty and 200+ students</li>
+                    <li>Developed interactive online courses with innovative technology solutions</li>
+                    <li>Monitored course effectiveness through learning analytics</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Technology Coordinator</h3>
+                <h4>Middle East Technical University Faculty of Education</h4>
+                <div class="meta">
+                    <i class="fas fa-calendar"></i> September 2015 – December 2024 | Ankara, Turkey
+                </div>
+                <ul>
+                    <li>Provided technical support to 40+ faculty members for technology integration</li>
+                    <li>Designed and delivered training workshops for 80+ staff members</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Chemistry Teacher</h3>
+                <h4>Jale Tezer High School</h4>
+                <div class="meta">
+                    <i class="fas fa-calendar"></i> September 2014 – August 2015 | Ankara, Turkey
+                </div>
+                <ul>
+                    <li>Delivered curriculum-aligned chemistry instruction for 300+ high school students</li>
+                    <li>Designed online educational materials for differentiated instruction</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
+            <div class="tabs-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="openTab(event, 'journals')">Journal Articles</button>
+                    <button class="tab-btn" onclick="openTab(event, 'chapters')">Book Chapters</button>
+                    <button class="tab-btn" onclick="openTab(event, 'proceedings')">Proceedings</button>
+                    <button class="tab-btn" onclick="openTab(event, 'under-review')">Under Review</button>
+                    <button class="tab-btn" onclick="openTab(event, 'in-prep')">In Preparation</button>
+                </div>
+
+                <div id="journals" class="tab-content active">
+                    <div class="publication-item">
+                        <p>Aldemir, T., <span class="author-me">Kilinc, S.</span>, Bicer, A., Grant, P., Davis, T. J., & Sweany, N. W. (2025). Intelligent-TPACK in practice: Design and evidence from a three-week teacher preparation module. <em>Computers and Education Open, 9</em>, 100306.</p>
+                        <a class="doi" href="https://doi.org/10.1016/j.caeo.2025.100306" target="_blank">https://doi.org/10.1016/j.caeo.2025.100306</a>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>Aldemir, T., Bicer, A., <span class="author-me">Kilinc, S.</span>, Moon, J., & Kwok, M. (2025). Exploring emergent AI-TPACK competencies in a two-week AI literacy module for preservice teachers. <em>Teaching and Teacher Education</em>.</p>
+                        <a class="doi" href="https://doi.org/10.1016/j.tate.2025.105231" target="_blank">https://doi.org/10.1016/j.tate.2025.105231</a>
+                    </div>
+
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span>, Geban, O., & Ozturk, G. (2025). STEM education in teacher education: Readiness, challenges, and alignment with global frameworks. <em>Ankara University Journal of Faculty of Educational Sciences</em>. (Accepted, in press)</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>Evkaya, O., <span class="author-me">Kilinc, S.</span>, & Kizilates, S. (2025). Cross-national perceptions of generative AI in higher education: A comparative study of university students in the UK and Turkey. <em>International Journal of Information and Education Technology</em>. (Accepted, in press)</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span> (2024). Comprehensive AI assessment framework: Enhancing educational evaluation with ethical AI integration. <em>Journal of Educational Technology and Online Learning, 7</em>(4-ICETOL 2024 Special Issue), 521-540.</p>
+                        <a class="doi" href="https://doi.org/10.31681/jetol.1492695" target="_blank">https://doi.org/10.31681/jetol.1492695</a>
+                    </div>
+
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span> (2023). Embracing the future of distance science education: Opportunities and challenges of ChatGPT integration. <em>Asian Journal of Distance Education, 18</em>(1), 205-237.</p>
+                        <a class="doi" href="https://doi.org/10.5281/zenodo.7857396" target="_blank">https://doi.org/10.5281/zenodo.7857396</a>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>Uzuntiryaki-Kondakci, E., Tuysuz, M., Sarici, E., Soysal, C., & <span class="author-me">Kilinc, S.</span> (2021). The role of the argumentation-based laboratory on the development of pre-service chemistry teachers' argumentation skills. <em>International Journal of Science Education, 43</em>(1), 30-55.</p>
+                        <a class="doi" href="https://doi.org/10.1080/09500693.2020.1846226" target="_blank">https://doi.org/10.1080/09500693.2020.1846226</a>
+                    </div>
+                </div>
+
+                <div id="chapters" class="tab-content">
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span> (2025). Personalizing education in the AI era: The comprehensive impact of customized chatbots across educational domains. In <em>Artificial Intelligence and Human Agency in Education: Volume Two: AI for Equity, Well-Being, and Innovation in Teaching and Learning</em>.</p>
+                        <a class="doi" href="https://doi.org/10.1007/978-981-96-9251-4_2" target="_blank">https://doi.org/10.1007/978-981-96-9251-4_2</a>
+                    </div>
+                </div>
+
+                <div id="proceedings" class="tab-content">
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span>, Aldemir, T., Sabanwar, V., Bicer, A., & Song, D. (2025). AI chatbot coaching for elevating student research. In <em>Proceedings of the 2025 ACM Conference on International Computing Education Research V. 2</em>.</p>
+                        <a class="doi" href="https://doi.org/10.1145/3702653.3744315" target="_blank">https://doi.org/10.1145/3702653.3744315</a>
+                    </div>
+                </div>
+
+                <div id="under-review" class="tab-content">
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span>, Aldemir, T., Misiejuk, K., Kaliisa, R., Bicer, A., Sabanwar, V., Song, D., & Yalvac, B. (2025). The anatomy of adaptive AI pedagogy: A mixed-methods analysis of AI scaffolding patterns and student inquiry profiles. <em>Computers & Education</em>.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>Aldemir, T., Bicer, A., <span class="author-me">Kilinc, S.</span>, Moon, J., & Kwok, M. (2025). Challenges, solutions, and PD needs for integrating AI: Insights from a two-week AI literacy module with preservice teachers. <em>Action in Teacher Education</em>.</p>
+                    </div>
+                </div>
+
+                <div id="in-prep" class="tab-content">
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span>, Uzuntiryaki-Kondakci, E., Incecay, I., & Yilmazel, E. (2025). Negotiating partnership: A case study on AI scaffolding and student agency in a project-based STEM activity. <em>International Review of Research in Open and Distributed Learning (IRRODL)</em>.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span>, Evkaya, O., & Kizilates, S. (2025). The generative AI student perception and experience index: A new tool for assessing university students' engagement with AI technologies. <em>Assessment in Education</em>.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span>, & Ozturk, G. (2025). Empowering STEM teachers of the future through technology-enhanced citizen science experiences. <em>Research in Science Education</em>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Presentations Section -->
+    <section id="presentations">
+        <div class="container">
+            <h2 class="section-title">Presentations</h2>
+            <div class="tabs-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="openTab(event, 'conferences')">Conference Presentations</button>
+                    <button class="tab-btn" onclick="openTab(event, 'lectures')">Invited Lectures</button>
+                    <button class="tab-btn" onclick="openTab(event, 'workshops')">Workshops</button>
+                </div>
+
+                <div id="conferences" class="tab-content active">
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span>, Aldemir, T., Sabanwar, V., Bicer, A., & Song, D. (2026). The AI as cognitive mentor: Scaffolding student scientific inquiry through dialogue. <em>American Educational Research Association (AERA) Annual Meeting</em>, Los Angeles, CA, USA. (Accepted)</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span>, Aldemir, T., Sabanwar, V., Bicer, A., & Song, D. (2026). Computational thinking and participation in rural Ag STEM: A comparative case study of two middle school teams. <em>American Educational Research Association (AERA) Annual Meeting</em>, Los Angeles, CA, USA. (Accepted)</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>Sabanwar, V., Aldemir, T., <span class="author-me">Kilinc, S.</span>, Bicer, A., & Song, D. (2026). Teacher conceptualization of student challenges and solutions for CT in a non-CS classroom. <em>American Educational Research Association (AERA) Annual Meeting</em>, Los Angeles, CA, USA. (Poster accepted)</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>Evkaya, O., <span class="author-me">Kilinc, S.</span>, & Kizilates, S. (2025). Cross-national perceptions of generative AI in higher education: A comparative study of university students in the UK and Turkey. <em>International Conference on Education and Artificial Intelligence Technologies (EAIT)</em>, Manchester, UK.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span>, Aldemir, T., Sabanwar, V., Bicer, A., & Song, D. (2025). Enhancing research questions and hypothesis development through AI chatbot assistance in rural agricultural education. <em>Association of Educational Communications & Technology (AECT) International Convention</em>, Las Vegas, NV, USA.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>Sabanwar, V., Aldemir, T., <span class="author-me">Kilinc, S.</span>, Bicer, A., & Song, D. (2025). Exploring computational thinking skills in the era of GenAI in K–12 education. <em>Association of Educational Communications & Technology (AECT) International Convention</em>, Las Vegas, NV, USA.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span>, Aldemir, T., Sabanwar, V., Bicer, A., & Song, D. (2025). AI chatbot coaching for elevating student research. <em>ACM Conference on International Computing Education Research (ICER)</em>, Charlottesville, VA, USA. (Poster)</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span>, & Ozturk, G. (2025). Innovative hybrid science education: Integrating citizen science & digital learning for future-ready teachers. <em>National Association for Research in Science Teaching (NARST) Annual International Conference</em>, National Harbor, MD, USA.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span>, & Ozturk, G. (2024). Evaluation of the effect of citizen science projects on the scientific competences of pre-service teachers. <em>National Science and Mathematics Education Congress</em>, Edirne, Turkey.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span> (2024). Shifting paradigms: Ethical approaches and integrity guidelines for AI-assisted assessments in learning. <em>International Conference on Educational Technology and Online Learning (ICETOL)</em>, Eskisehir, Turkey.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span>, Geban, O., & Ozturk, G. (2018). Exploring instructors' perceptions of a faculty of education in Turkey about STEM education. <em>Annual European Conference on Educational Research (ECER)</em>, Bolzano, Italy.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p><span class="author-me">Kilinc, S.</span>, Sarici, E., Soysal, C., & Kondakci, E. (2017). Contribution of the argumentation-based laboratory to pre-service chemistry teachers' microscopic explanations of chemistry concepts. <em>National Association for Research in Science Teaching (NARST) Annual International Conference</em>, San Antonio, TX, USA.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>Soysal, C., Sarici, E., <span class="author-me">Kilinc, S.</span>, & Kondakci, E. (2017). Development of pre-service chemistry teachers' argumentation skills in implementing science writing heuristic at chemistry laboratory subject/problem. <em>National Association for Research in Science Teaching (NARST) Annual International Conference</em>, San Antonio, TX, USA.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>Ekiz Kiran, B., Kutucu, E. S., <span class="author-me">Kilinc, S.</span>, Soysal, C., & Boz, Y. (2016). Pre-service chemistry teachers' level of explaining daily life events using their chemistry knowledge. <em>National Science and Mathematics Education Congress</em>, Trabzon, Turkey.</p>
+                    </div>
+                </div>
+
+                <div id="lectures" class="tab-content">
+                    <div class="publication-item">
+                        <p>From questions to insights: Demonstrating qualitative design in action (2025). Guest lecture for EDCI 690, Department of Teaching, Learning & Culture, Texas A&M University, USA.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>Citizen-science + IoT: Pathways to authentic STEM & future-ready teachers (2025). Guest lecture for ENGR/SCIED 497F, Department of Teaching, Learning & Culture, Texas A&M University, USA.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>Generative AI and custom GPT usage in STEM projects (2025). TED Ankara College (Online), Ankara, Turkey.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>Leveraging real-time data for enhanced science learning (2024). Ankara University, Turkey.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>The role of technology in modern science pedagogy (2023). Bestepe College, Ankara, Turkey.</p>
+                    </div>
+                </div>
+
+                <div id="workshops" class="tab-content">
+                    <div class="publication-item">
+                        <p>Bridging research and practice: Assessment design with AI (2025). Department of Science Education, Middle East Technical University (Online), Ankara, Turkey.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>AI in the classroom: Practical strategies for educators (2024). Faculty of Education, Middle East Technical University, Ankara, Turkey.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>IoT for environmental science: A workshop for K–12 teachers (2024). Ankara University, Turkey.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>Citizen science projects in authentic research (2023). Workshop on Climate Change and Environment, Ankara, Turkey.</p>
+                    </div>
+
+                    <div class="publication-item">
+                        <p>Distance education and LMS integration into teaching (2020 & 2021). Middle East Technical University, Ankara, Turkey.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Research Projects</h2>
+
+            <div class="card">
+                <h3>Artificial Intelligence Mentorship for Rural Education</h3>
+                <h4>Educational Innovation Project</h4>
+                <div class="meta">
+                    <i class="fas fa-calendar"></i> January 2025 – Present | Texas, USA
+                </div>
+                <ul>
+                    <li>Co-designed and implemented a 16-week AI-enhanced agriculture-STEM curriculum for 80+ middle school students at Caldwell Junior High</li>
+                    <li>Integrated Arduino-based IoT sensors and a custom AI chatbot tutor to support student inquiry</li>
+                    <li>Led co-design and professional-development workshops with teachers</li>
+                    <li>Coordinating expansion phase with parallel implementations at Caldwell and Brenham Junior High Schools</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Permaculture Chatbot & Engineering-Design Mentorship</h3>
+                <h4>Educational Design Project</h4>
+                <div class="meta">
+                    <i class="fas fa-calendar"></i> October 2024 – August 2025 | Ankara, Turkey
+                </div>
+                <ul>
+                    <li>Designed custom AI chatbot to scaffold the Engineering Design Process for 12th-grade students</li>
+                    <li>Delivered two-day workshop to 70 students on chatbot use and permaculture principles</li>
+                    <li>Collected interaction logs and performance data to evaluate effectiveness</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Determining of Education Faculties' STEM Readiness</h3>
+                <h4>Scientific Research Project</h4>
+                <div class="meta">
+                    <i class="fas fa-calendar"></i> January 2017 – December 2017 | Ankara, Turkey
+                </div>
+                <ul>
+                    <li>Evaluated STEM-readiness of faculty members and pre-service teachers</li>
+                    <li>Produced policy report informing Turkish Higher Education Council's strategies</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Section -->
+    <section id="service">
+        <div class="container">
+            <h2 class="section-title">Professional Service & Memberships</h2>
+            <div class="service-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-book-open"></i> Journal Reviewer</h3>
+                    <ul>
+                        <li>Computers & Education Open</li>
+                        <li>Teaching and Teacher Education</li>
+                        <li>Frontiers in Education</li>
+                        <li>Education Innovations: Systems and Future Learning</li>
+                        <li>AIS Transactions on Human-Computer Interaction</li>
+                        <li>International Journal of Science, Technology and Society</li>
+                        <li>Acta Infologica (ACIN)</li>
+                        <li>Turkish Journal of Educational Sciences</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-search"></i> Conference Reviewer</h3>
+                    <ul>
+                        <li>ISLS Annual Meeting 2025 & 2026</li>
+                        <li>AECT Online Conference 2026</li>
+                        <li>NARST Annual Conference 2025 & 2026</li>
+                        <li>AERA Annual Meeting 2026</li>
+                        <li>National Science and Mathematics Education Congress 2024</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; text-align: center; color: var(--secondary);">Professional Memberships</h3>
+            <div class="membership-grid">
+                <div class="membership-item">
+                    <span class="org">ISLS</span>
+                    <span class="year">2025 – Present</span>
+                </div>
+                <div class="membership-item">
+                    <span class="org">NARST</span>
+                    <span class="year">2024 – Present</span>
+                </div>
+                <div class="membership-item">
+                    <span class="org">AERA</span>
+                    <span class="year">2025 – Present</span>
+                </div>
+                <div class="membership-item">
+                    <span class="org">ACM</span>
+                    <span class="year">2025 – Present</span>
+                </div>
+                <div class="membership-item">
+                    <span class="org">AECT</span>
+                    <span class="year">2025 – Present</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Download Section -->
+    <section class="cv-section" id="cv">
+        <div class="container">
+            <h2>Download Full CV</h2>
+            <p>Access my complete curriculum vitae with all details including references, languages, certifications, and community engagement</p>
+            <a href="Selcuk-Kilinc-FlowCV-Resume-20251115.pdf" class="cv-btn" download>
+                <i class="fas fa-download"></i> Download CV (PDF)
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Selcuk Kilinc | Postdoctoral Research Associate at Texas A&M University</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="mailto:selcuklnc@tamu.edu"><i class="fas fa-envelope"></i> selcuklnc@tamu.edu</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        function openTab(evt, tabName) {
+            const tabContents = evt.target.closest('.tabs-container').querySelectorAll('.tab-content');
+            const tabButtons = evt.target.closest('.tabs-container').querySelectorAll('.tab-btn');
+            
+            tabContents.forEach(content => content.classList.remove('active'));
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            
+            evt.target.closest('.tabs-container').querySelector('#' + tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 70;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .edu-card, .skill-category, .tabs-container').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
